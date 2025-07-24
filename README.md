@@ -62,6 +62,6 @@ Untuk pertanyaan atau laporan bug, hubungi: [mabaega@gmail.com](mailto:mabaega@g
 
 ## 🧾 Contoh Tampilan
 
-![screenshot](screenshot.png)
+![screenshot](View01.png)
 
 ---
