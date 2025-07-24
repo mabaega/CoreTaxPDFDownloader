@@ -1,0 +1,27 @@
+{
+  "manifest_version": 3,
+  "name": "Faktur Downloader",
+  "version": "1.0",
+  "description": "Extensi ini berfungsi untuk auto klik semua tombol download untuk baris yang dipilih dalam tabel .",
+  "permissions": ["scripting", "activeTab"],
+  "host_permissions": [
+    "https://coretaxdjp.pajak.go.id/*"
+  ],
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "action": {
+    "default_title": "Auto Download Clicker",
+    "default_icon": {
+      "32": "icons/icon32.png"
+    }
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+  ]
+}
