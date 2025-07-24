@@ -23,6 +23,8 @@
 3. Konfirmasi pemasangan dengan memilih **Add extension**
 4. Setelah berhasil dipasang, ikon ekstensi (📄) akan muncul di pojok kanan atas browser
 
+![Tampilan-Extensi](View03.png)
+
 ### 📥 Langkah 2: Mengunduh Faktur Pajak
 
 1. Kunjungi situs resmi DJP e-Faktur:  
