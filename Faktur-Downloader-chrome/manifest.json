@@ -1,4 +1,4 @@
-{
+ax{
   "manifest_version": 3,
   "name": "Free-CoreTax Faktur Downloader",
   "version": "2.3",
@@ -14,7 +14,7 @@
     "128": "icons/icon128.png"
   },
   "action": {
-    "default_title": "Free-CoreTax PDF Faktur Downloader",
+    "default_title": "Auto Download Clicker",
     "default_icon": {
       "16": "icons/icon16.png",
       "32": "icons/icon32.png"
