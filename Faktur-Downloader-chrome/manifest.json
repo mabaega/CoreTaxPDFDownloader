@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "Faktur Downloader",
-  "version": "1.0",
-  "description": "Extensi ini berfungsi untuk auto klik semua tombol download untuk baris yang dipilih dalam tabel .",
+  "name": "Free-CoreTax Faktur Downloader",
+  "version": "2.3",
+  "description": "Ekstensi ini memungkinkan Anda mengunduh banyak faktur sekaligus dengan mudah.",
   "permissions": ["scripting", "activeTab"],
   "host_permissions": [
     "https://coretaxdjp.pajak.go.id/*"
@@ -14,14 +14,13 @@
     "128": "icons/icon128.png"
   },
   "action": {
-    "default_title": "Auto Download Clicker",
+    "default_title": "Free-CoreTax PDF Faktur Downloader",
     "default_icon": {
+      "16": "icons/icon16.png",
       "32": "icons/icon32.png"
     }
   },
   "background": {
     "service_worker": "background.js"
-  },
-  "content_scripts": [
-  ]
+  }
 }

@@ -1,6 +1,6 @@
 # CoreTax PDF Faktur Downloader - Chrome Extension 🇮🇩
 
-**CoreTax PDF Downloader** adalah ekstensi peramban untuk Google Chrome/Chromium-based browsers yang membantu pengguna mengunduh faktur pajak (eFaktur) dari situs resmi Direktorat Jenderal Pajak (https://coretaxdjp.pajak.go.id/) dengan lebih cepat, mudah, dan praktis.
+**CoreTax PDF Faktur Downloader** adalah ekstensi peramban untuk Google Chrome/Chromium-based browsers yang membantu pengguna mengunduh faktur pajak (eFaktur) dari situs resmi Direktorat Jenderal Pajak (https://coretaxdjp.pajak.go.id/) dengan lebih cepat, mudah, dan praktis.
 
 ---
 
@@ -32,8 +32,7 @@
 2. Login ke sistem seperti biasa menggunakan akun PKP Anda
 3. Navigasi ke halaman daftar faktur atau halaman detail faktur yang ingin Anda unduh
 4. Klik ikon ekstensi **Faktur Downloader** di toolbar browser
-5. Akan muncul tombol **Download PDF**
-6. Klik tombol tersebut, dan file faktur dalam format PDF akan diunduh otomatis
+5. Klik tombol tersebut, dan file faktur dalam format PDF akan diunduh otomatis
 
 📌 *Pastikan Anda sudah berada di halaman faktur sebelum menekan tombol download*
 
