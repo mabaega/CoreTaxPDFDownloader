@@ -85,7 +85,7 @@ Detail lengkap: [Privacy Policy](Privacy-Policy.md)
 
 ## 🧾 Lisensi
 
-MIT License © 2025 I Made Bambang Era Gunawa  
+MIT License © 2025 Mabaega  
 
 Ekstensi ini juga menyertakan library pihak ketiga:  
 - [SweetAlert2](https://sweetalert2.github.io/) (MIT)  
