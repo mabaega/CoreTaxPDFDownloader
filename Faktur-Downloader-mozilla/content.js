@@ -46,24 +46,115 @@ function showSwal(message) {
   let count = 0;
   let targetRows = [];
 
-  rows.forEach((row, index) => {
-    const checkboxBox = row.querySelector(".p-checkbox-box");
-    const isChecked = checkboxBox?.classList.contains("p-highlight");
-    if (isChecked) {
-      const downloadBtn = row.querySelector('button#DownloadButton');
-      if (downloadBtn) {
-        const cells = Array.from(row.querySelectorAll("td")).map((td) => td.textContent.trim());
-        const identifier = cells[5]; // Nomor Faktur Pajak
-        targetRows.push({
-          index,
-          cells,
-          identifier,
-          processed: false,
-        });
-        count++;
-      }
+const identifierContainsMapping = [
+  // e-Invoice
+  { contains: "special-output-tax", index: 4 },
+  { contains: "special-input-tax", index: 4 },
+  { contains: "special-output-return", index: 5 },
+  { contains: "special-input-return", index: 5 },
+  { contains: "output-return", index: 6 },
+  { contains: "input-return", index: 6 },
+  { contains: "output-tax", index: 5 },
+  { contains: "input-tax", index: 4 }, 
+
+  // withholding slips umum (3)
+  { contains: "ebupotbpu", index: 3 },
+  { contains: "ebupotbpnr", index: 3 },
+  { contains: "ebupotsp", index: 3 },
+  { contains: "ebupotcy", index: 3 },
+  { contains: "ebupotbp21", index: 3 },
+  { contains: "ebupotbp26", index: 3 },
+  { contains: "ebupotmp", index: 3 },
+
+  // withholding slips khusus (4)
+  { contains: "ebupotbpa1", index: 4 },
+  { contains: "ebupotbpa2", index: 4 },
+
+  // upload document
+  { contains: "documentupload", index: 2 },
+];
+
+function resolveIdentifierColumnFromHref(href) {
+  const lower = href.toLowerCase();
+  for (const entry of identifierContainsMapping) {
+    if (lower.includes(entry.contains.toLowerCase())) {
+      return entry.index;
     }
+  }
+  console.warn(`Tidak ada match substring untuk "${href}", fallback ke 5`);
+  return 5;
+}
+
+// wrap ini jadi fungsi supaya dipakai konsisten
+function getCurrentIdentifierColumn() {
+  return resolveIdentifierColumnFromHref(window.location.href);
+}
+
+// penggunaan awal untuk membangun targetRows
+let identifierColumn = getCurrentIdentifierColumn();
+
+rows.forEach((row, index) => {
+  const checkboxBox = row.querySelector(".p-checkbox-box");
+  const isChecked = checkboxBox?.classList.contains("p-highlight");
+  if (!isChecked) return;
+
+  const downloadBtn = row.querySelector('button#DownloadButton');
+  if (!downloadBtn) return;
+
+  const cells = Array.from(row.querySelectorAll("td")).map((td) => td.textContent.trim());
+  const identifier = cells[identifierColumn] ?? "";
+
+  targetRows.push({
+    index,
+    cells,
+    identifier,
+    processed: false,
   });
+  count++;
+});
+
+// saat mulai download, simpan juga kolom identifier yang dipakai
+function startDownloadProcess() {
+  window.downloadInProgress = true;
+  localStorage.setItem("pendingDownloads", JSON.stringify({
+    targets: targetRows,
+    currentIndex: 0,
+    totalCount: count,
+    startTime: Date.now(),
+    identifierColumn: getCurrentIdentifierColumn(), // simpan supaya konsisten saat resume
+  }));
+  showProgressDialog(0, count);
+  setTimeout(processDownloads, 500);
+}
+
+// perbaiki findTargetRow agar memakai kolom yang sama (dari storage jika ada)
+function findTargetRow(targetData) {
+  const currentTable = document.querySelector("div.p-datatable-wrapper table");
+  if (!currentTable) return null;
+  const currentRows = currentTable.querySelectorAll("tbody tr");
+
+  // ambil identifierColumn yang tersimpan jika ada, fallback ke resolve dinamis
+  const pendingDataRaw = localStorage.getItem("pendingDownloads");
+  let identifierCol = getCurrentIdentifierColumn();
+  if (pendingDataRaw) {
+    try {
+      const parsed = JSON.parse(pendingDataRaw);
+      if (typeof parsed.identifierColumn === "number") {
+        identifierCol = parsed.identifierColumn;
+      }
+    } catch (e) {
+      console.warn("Gagal parse pendingDownloads saat findTargetRow:", e);
+    }
+  }
+
+  for (let row of currentRows) {
+    const cells = Array.from(row.querySelectorAll("td")).map((td) => td.textContent.trim());
+    const identifier = cells[identifierCol];
+    if (identifier === targetData.identifier) return row;
+  }
+  return null;
+}
+
 
   if (count === 0) {
     Swal.fire({
@@ -133,18 +224,6 @@ function showSwal(message) {
     }, 100);
   }
 
-  function startDownloadProcess() {
-    window.downloadInProgress = true;
-    localStorage.setItem("pendingDownloads", JSON.stringify({
-      targets: targetRows,
-      currentIndex: 0,
-      totalCount: count,
-      startTime: Date.now(),
-    }));
-    showProgressDialog(0, count);
-    setTimeout(processDownloads, 500);
-  }
-
   function showProgressDialog(completed, total) {
     Swal.fire({
       title: "Sedang Mendownload...",
@@ -178,18 +257,6 @@ function showSwal(message) {
     if (window.downloadInProgress) {
       setTimeout(updateTimer, 500);
     }
-  }
-
-  function findTargetRow(targetData) {
-    const currentTable = document.querySelector("div.p-datatable-wrapper table");
-    if (!currentTable) return null;
-    const currentRows = currentTable.querySelectorAll("tbody tr");
-    for (let row of currentRows) {
-      const cells = Array.from(row.querySelectorAll("td")).map((td) => td.textContent.trim());
-      const identifier = cells[5];
-      if (identifier === targetData.identifier) return row;
-    }
-    return null;
   }
 
   function processDownloads() {
