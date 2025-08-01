@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Free-CoreTax Faktur Downloader",
   "version": "2.4",
-  "description": "Ekstensi ini memungkinkan Anda mengunduh banyak faktur sekaligus dengan mudah.",
+  "description": "Ekstensi ini memungkinkan Anda mengunduh banyak PDF sekaligus dengan mudah.",
   "permissions": ["scripting", "activeTab"],
   "host_permissions": [
     "https://coretaxdjp.pajak.go.id/*"
