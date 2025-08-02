@@ -1,16 +1,14 @@
-# CoreTax PDF Faktur Downloader (Chrome & Firefox Extension) 🇮🇩
+# CoreTax PDF Downloader (Edge, Chrome & Firefox Extension) 🇮🇩
 
-**CoreTax PDF Faktur Downloader** adalah ekstensi peramban untuk Google Chrome/Chromium-based browsers dan Mozilla Firefox yang membantu pengguna mengunduh faktur pajak (eFaktur) dari situs resmi Direktorat Jenderal Pajak (https://coretaxdjp.pajak.go.id/) dengan lebih cepat, mudah, dan praktis.
+**CoreTax PDF Downloader** adalah ekstensi peramban untuk Google Chrome/Chromium-based browsers dan Mozilla Firefox yang membantu pengguna mengunduh PDF dari situs resmi Direktorat Jenderal Pajak (https://coretaxdjp.pajak.go.id/) dengan lebih cepat, mudah, dan praktis.
 
 ---
 
 ## ✨ Fitur Utama
 
-- 🧾 **Download Faktur Pajak otomatis** dalam format PDF
-- ⚡ **Tombol cepat** langsung di halaman e-Faktur DJP Online
+- 🧾 **Download Dokumen Pajak otomatis** dalam format PDF
 - 💡 Antarmuka ringan dan intuitif
 - 🔒 Semua proses dilakukan *lokal di perangkat* (tidak ada data pribadi yang dikirim keluar)
-- ⏸️ Mendukung **resume download** setelah halaman direfresh
 - 📊 Progress bar interaktif selama proses download
 - ❤️ Dukungan donasi via QRIS (opsional)
 
@@ -20,6 +18,7 @@
 
 - [Mozilla Add-ons (AMO)](https://addons.mozilla.org/addon/free-coretax-faktur-downloader/)  
 - [Chrome Web Store](#) *(link akan diperbarui setelah publikasi)*
+- [Edge Add-ons](#) *(link akan diperbarui setelah publikasi)*
 
 ---
 
@@ -27,18 +26,18 @@
 
 1. Login ke [https://coretaxdjp.pajak.go.id/](https://coretaxdjp.pajak.go.id/) seperti biasa.
 2. Navigasi ke halaman daftar faktur atau bukti potong.
-3. Pilih faktur yang ingin diunduh.
-4. Klik ikon ekstensi **Faktur Downloader** di toolbar browser.
-5. Faktur PDF akan terunduh otomatis.
+3. Pilih faktur atau bukti potong yang ingin diunduh.
+4. Klik ikon ekstensi **CoreTax PDF Downloader** di toolbar browser.
+5. Dokumen PDF akan terunduh otomatis.
 
-📌 *Pastikan Anda sudah berada di halaman faktur sebelum menekan tombol download.*
+📌 *Pastikan Anda sudah berada di halaman faktur/bukti potong sebelum menekan tombol download.*
 
 ---
 
 ## ⚠️ Catatan Penting
 
 Agar proses download berjalan lancar, **nonaktifkan fitur buka otomatis PDF di browser**.  
-Jika tidak, browser akan membuka tab baru untuk setiap faktur yang diunduh.
+Jika tidak, browser akan membuka tab baru untuk setiap faktur/bukti potong yang diunduh.
 
 ### 🦊 Firefox
 1. Buka **Menu (☰) → Settings**  
@@ -77,8 +76,9 @@ Detail lengkap: [Privacy Policy](Privacy-Policy.md)
 
 ## 📂 Struktur Repositori
 
-- `Faktur-Downloader-chrome` → kode sumber untuk Google Chrome / Chromium  
-- `Faktur-Downloader-mozilla` → kode sumber untuk Mozilla Firefox  
+- `DOF-Downloader-chrome` → kode sumber untuk Google Chrome 
+- `PDF-Downloader-mozilla` → kode sumber untuk Mozilla Firefox  
+- `PDF-Downloader-edge` → kode sumber untuk Microsoft Edge  
 - `Privacy-Policy.md` → kebijakan privasi  
 
 ---

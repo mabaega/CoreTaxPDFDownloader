@@ -1,0 +1,9 @@
+This extension includes the following third-party libraries (all MIT licensed):
+
+- SweetAlert2
+  File: libs/sweetalert2.all.min.js
+  Source: https://sweetalert2.github.io/
+
+- QRCode.js
+  File: libs/qrcode.min.js
+  Source: https://github.com/davidshimjs/qrcodejs

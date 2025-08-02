@@ -17,7 +17,7 @@ function showSwal(message) {
   if (window.location.hostname !== "coretaxdjp.pajak.go.id") {
     Swal.fire({
       icon: "info",
-      title: "Free-CoreTax PDF Faktur Downloader",
+      title: "Free-CoreTax PDF Downloader",
       text: "Ekstensi ini hanya berfungsi di situs coretaxdjp.pajak.go.id",
       showDenyButton: true,
       confirmButtonText: "Dukung Developer",
@@ -38,7 +38,7 @@ function showSwal(message) {
 
   const table = document.querySelector("div.p-datatable-wrapper table");
   if (!table) {
-    showSwal("Tabel Data Faktur tidak ditemukan.");
+    showSwal("Tabel Data PDF tidak ditemukan.");
     return;
   }
 
@@ -159,8 +159,8 @@ function findTargetRow(targetData) {
   if (count === 0) {
     Swal.fire({
       icon: "info",
-      title: "Pilih Faktur",
-      text: "Silahkan pilih faktur yang akan didownload.",
+      title: "Pilih PDF",
+      text: "Silahkan pilih PDF yang akan didownload.",
       showDenyButton: true,
       confirmButtonText: "Dukung Developer",
       denyButtonText: "OK",
@@ -176,7 +176,7 @@ function findTargetRow(targetData) {
   Swal.fire({
     icon: "question",
     title: "Konfirmasi Download",
-    text: `Akan mendownload ${count} faktur. Lanjutkan?`,
+    text: `Akan mendownload ${count} PDF. Lanjutkan?`,
     showCancelButton: true,
     confirmButtonText: "OK",
     cancelButtonText: "Batal",
@@ -268,7 +268,7 @@ function findTargetRow(targetData) {
 
     const currentTarget = targets[currentIndex];
     const statusElement = document.getElementById("download-status");
-    if (statusElement) statusElement.textContent = `Memproses faktur ${currentIndex + 1} dari ${totalCount}...`;
+    if (statusElement) statusElement.textContent = `Memproses PDF ${currentIndex + 1} dari ${totalCount}...`;
 
     const targetRow = findTargetRow(currentTarget);
     if (targetRow) {
@@ -307,7 +307,7 @@ function findTargetRow(targetData) {
     Swal.fire({
       icon: "success",
       title: "Download Selesai",
-      text: `Berhasil memproses ${totalFiles} faktur.`,
+      text: `Berhasil memproses ${totalFiles} PDF.`,
       showDenyButton: true,
       confirmButtonText: "Tutup",
       denyButtonText: "Dukung Developer",
