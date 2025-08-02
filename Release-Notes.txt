@@ -1,3 +1,7 @@
+Versi 2.5 (2025-08-01)
+- Penggantian nama Extensi dari Free-CoreTax Faktur Downloader menjadi Free-CoreTax PDF Downloader.
+- Memisahkan extensi untuk Edge browser dan Google Chrome browser. 
+
 Versi 2.4 (2025-08-01)
 - Peningkatan deteksi kolom identifier untuk faktur dan bukti potong (mendukung berbagai format tabel dan locale).
 - Perbaikan proses download yang sebelumnya tidak berjalan di beberapa halaman CoreTax.
